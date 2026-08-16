@@ -49,7 +49,24 @@ body::before {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
+.cursor-glow {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    600px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(255, 255, 255, 0.06),
+    transparent 60%
+  );
+}
+
 #root {
+  position: relative;
+  z-index: 1;
+}
+
+main {
   position: relative;
   z-index: 1;
 }
@@ -104,9 +121,15 @@ a {
 .masthead-brand:hover {
   text-decoration: none;
 }
+.seal-wrap {
+  display: inline-flex;
+  transition: transform 0.25s ease-out;
+}
 .seal {
   color: var(--accent);
   flex: none;
+  transform-origin: 50% 50%;
+  animation: sealBreath 4.5s ease-in-out infinite;
 }
 .masthead-title {
   font-family: var(--font-sc);
@@ -168,25 +191,12 @@ a {
   flex-wrap: wrap;
   align-items: center;
 }
-.coords-home {
-  color: var(--accent);
-}
-.coords-home:hover {
-  text-decoration: none;
-  color: var(--accent-soft);
-}
 .coords-sep {
   color: var(--frame);
   margin: 0 0.25rem;
 }
 .coords-seg {
   color: var(--muted);
-}
-.coords-icon {
-  width: 0.95rem;
-  height: 0.95rem;
-  vertical-align: -0.15em;
-  margin-right: 0.25rem;
 }
 .notfound-icon {
   width: 0.95rem;
@@ -411,24 +421,44 @@ a {
     transform: translateY(0);
   }
 }
-@keyframes sealPulse {
+@keyframes sealBreath {
   0%,
   100% {
-    transform: rotate(0deg);
+    transform: scale(1);
   }
   50% {
-    transform: rotate(8deg);
+    transform: scale(1.05);
+  }
+}
+@keyframes diamondPulse {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: scale(0.9) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05) rotate(45deg);
+  }
+}
+@keyframes plateDrift {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.06);
   }
 }
 
 .coords {
   animation: fadeSlideIn 0.45s ease both;
 }
-.seal:hover {
-  animation: sealPulse 1.6s ease-in-out infinite;
-}
 
 @media (prefers-reduced-motion: reduce) {
+  .cursor-glow {
+    display: none;
+  }
   *,
   *::before,
   *::after {

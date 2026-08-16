@@ -41,7 +41,9 @@
 }
 .ornament-diamond {
   width: 0.85rem;
-  height: 0.85rem;
+  height: 0.75rem;
+  animation: diamondPulse 3.5s ease-in-out infinite;
+  transform-origin: 50% 50%;
 }
 .codex-sub {
   font-family: var(--font-body);
@@ -118,6 +120,8 @@
   aspect-ratio: 16 / 9;
   overflow: hidden;
   border: 1px solid var(--frame);
+  animation: plateDrift 18s ease-in-out infinite;
+  transform-origin: 50% 50%;
 }
 .placard-plate img {
   width: 100%;

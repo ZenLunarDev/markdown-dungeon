@@ -5,7 +5,6 @@ import { renderMarkdown } from '../lib/markdown';
 import Header from '../components/Header.jsx';
 import RoomView from '../components/RoomView.jsx';
 import NotFound from '../components/NotFound.jsx';
-import { HomeIcon } from '../components/icons.jsx';
 
 export default function Room() {
   const { pathname } = useLocation();
@@ -47,10 +46,6 @@ export default function Room() {
       <Header />
       <main className="room-shell" onClick={handleClick}>
         <nav className="coords" aria-label="location">
-          <Link to="/" className="coords-home">
-            <HomeIcon className="coords-icon" />
-            entrance
-          </Link>
           {crumbs.map((c, i) => (
             <span key={i} className="coords-seg">
               <span className="coords-sep">/</span>
