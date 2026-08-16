@@ -6,16 +6,8 @@ import { findDungeonInfo, dungeonImageUrl } from '../lib/dungeons';
 import Header from '../components/Header.jsx';
 import Footer from '../components/Footer.jsx';
 import RoomCard from '../components/RoomCard.jsx';
-import { BookIcon, DiamondOrnament } from '../components/icons.jsx';
+import { DiamondOrnament } from '../components/icons.jsx';
 import '../styles/home.css';
-
-const LANGUAGE_LABELS = {
-  english: 'English',
-  chinese: '中文',
-  portuguese: 'Português',
-  spanish: 'Español',
-};
-const LANGUAGE_ORDER = ['english', 'chinese', 'portuguese', 'spanish'];
 
 function toRoman(num) {
   const map = [
@@ -75,11 +67,6 @@ export default function Home() {
     };
   }, []);
 
-  const groups = LANGUAGE_ORDER.map((lang) => ({
-    lang,
-    items: cards.filter((c) => c.info && c.info.language === lang),
-  })).filter((g) => g.items.length > 0);
-
   return (
     <>
       <Header />
@@ -98,23 +85,17 @@ export default function Home() {
 
         {!loaded && <p className="muted">Unsealing the tomes…</p>}
 
-        {groups.map((group) => (
-          <section className="tome-section" key={group.lang}>
-            <h2 className="tome-heading">
-              <BookIcon className="tome-icon" />
-              Tomes in {LANGUAGE_LABELS[group.lang] || group.lang}
-            </h2>
-            <div className="placard-grid">
-              {group.items.map((card) => (
-                <RoomCard
-                  key={card.route}
-                  card={card}
-                  roman={toRoman(card.index)}
-                />
-              ))}
-            </div>
-          </section>
-        ))}
+        <section className="home-grid">
+          <div className="placard-grid">
+            {cards.map((card) => (
+              <RoomCard
+                key={card.route}
+                card={card}
+                roman={toRoman(card.index)}
+              />
+            ))}
+          </div>
+        </section>
       </main>
       <Footer />
     </>

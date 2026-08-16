@@ -1,50 +1,14 @@
 [
   {
-    "name": "normal-dungeon",
-    "display": "The Normal Dungeon",
-    "image": "",
+    "name": "the-hollow-torch",
+    "display": "The Hollow Torch",
+    "image": "dungeon.jpg",
     "language": "english"
   },
   {
-    "name": "great-wall",
-    "display": "長城",
-    "image": "great-wall.jpg",
-    "language": "chinese"
-  },
-  {
-    "name": "covid-19",
-    "display": "COVID-19",
-    "image": "covid-19.jpg",
-    "language": "english"
-  },
-  {
-    "name": "normal-dungeon",
-    "display": "O Calabouço Normal",
-    "image": "",
-    "language": "portuguese"
-  },
-  {
-    "name": "time-travel",
-    "display": "Time travel",
-    "image": "time-travel.jpg",
-    "language": "english"
-  },
-  {
-    "name": "normal-dungeon",
-    "display": "Un Calabozo Normal",
-    "image": "",
-    "language": "spanish"
-  },
-  {
-    "name": "sci-fi-dungeon",
-    "display": "The Sci-fi Dungeon",
+    "name": "clockwork-descent",
+    "display": "Clockwork Descent",
     "image": "scifi-dungeon.jpg",
-    "language": "english"
-  },
-  {
-    "name": "mines-of-moria",
-    "display": "The Mines of Moria Dungeon",
-    "image": "mines-of-moria.jpg",
     "language": "english"
   }
 ]
