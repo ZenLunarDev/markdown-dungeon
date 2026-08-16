@@ -8,7 +8,7 @@ In this tutorial we will try to keep stuff simple and therefore use the command 
 
 ## Find an issue
 
-While viewing the repository you can use the tap "Issues" to view and filter [open issues](https://github.com/MakeContributions/markdown-dungeon/issues).  
+While viewing the repository you can use the tap "Issues" to view and filter [open issues](https://github.com/ZenLunarDev/markdown-dungeon/issues).  
 There are some tags like "good first issue" or "beginner" that might be of special interest to you.
 
 ## (Optional) Announce your interest

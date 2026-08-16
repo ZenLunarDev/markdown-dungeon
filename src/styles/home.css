@@ -1,0 +1,206 @@
+/* ---------- Codex header ---------- */
+.codex-head {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 3.5rem 1.4rem 1.5rem;
+  animation: fadeUp 0.6s ease both;
+}
+.codex-kicker {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent-soft);
+  margin: 0 0 1rem;
+}
+.codex-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.6rem, 7vw, 4.4rem);
+  line-height: 1;
+  margin: 0;
+  color: var(--text);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+.rule-ornament {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 1.4rem 0;
+  color: var(--accent-soft);
+}
+.rule-ornament::before,
+.rule-ornament::after {
+  content: '';
+  height: 1px;
+  flex: 1;
+  background: linear-gradient(90deg, transparent, var(--rule), transparent);
+}
+.rule-ornament span {
+  font-size: 1rem;
+}
+.ornament-diamond {
+  width: 0.85rem;
+  height: 0.85rem;
+}
+.codex-sub {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--muted);
+  margin: 0;
+  max-width: 60ch;
+}
+
+/* ---------- Tome sections ---------- */
+.tome-section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1.5rem 1.4rem 2rem;
+}
+.tome-heading {
+  font-family: var(--font-sc);
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 2rem 0 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  border-bottom: 1px solid var(--frame);
+  padding-bottom: 0.6rem;
+}
+.tome-mark {
+  color: var(--accent-soft);
+}
+.tome-icon {
+  width: 1.05rem;
+  height: 1.05rem;
+}
+
+/* ---------- Dungeon placards ---------- */
+.placard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.9rem;
+}
+.placard {
+  display: block;
+  color: var(--text);
+  animation: fadeUp 0.55s ease both;
+}
+.placard-frame {
+  position: relative;
+  background: linear-gradient(180deg, var(--panel), var(--bg-2));
+  border: 1px solid var(--frame);
+  padding: 1.4rem 1.4rem 1.6rem;
+  transition: transform 0.2s ease, border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+.placard-frame::after {
+  content: '';
+  position: absolute;
+  inset: 7px;
+  border: 1px solid var(--rule);
+  opacity: 0.5;
+  pointer-events: none;
+}
+.placard:hover .placard-frame {
+  transform: translateY(-5px);
+  border-color: var(--accent);
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.5);
+}
+.placard-num {
+  position: absolute;
+  top: -0.7rem;
+  left: 1rem;
+  font-family: var(--font-sc);
+  font-size: 1.1rem;
+  color: var(--accent);
+  background: var(--bg);
+  padding: 0 0.4rem;
+  letter-spacing: 0.1em;
+}
+.placard-lang {
+  position: absolute;
+  top: 0.95rem;
+  right: 1.1rem;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--muted);
+}
+.placard-plate {
+  position: relative;
+  margin: 0.6rem 0 1rem;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border: 1px solid var(--frame);
+}
+.placard-plate img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(1) contrast(1.05) brightness(0.85);
+  transition: filter 0.3s ease, transform 0.4s ease;
+}
+.placard:hover .placard-plate img {
+  filter: grayscale(1) contrast(1.05) brightness(1);
+  transform: scale(1.04);
+}
+.placard-seal {
+  position: absolute;
+  right: 0.6rem;
+  bottom: 0.6rem;
+  width: 2.1rem;
+  height: 2.1rem;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(circle at 35% 30%, #e6e6e6, #9a9a9a);
+  color: #111111;
+  font-size: 1rem;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transform: scale(0.6) rotate(-20deg);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.placard-seal-icon {
+  width: 1.05rem;
+  height: 1.05rem;
+}
+.placard:hover .placard-seal {
+  opacity: 1;
+  transform: scale(1) rotate(0);
+}
+.placard-title {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  color: var(--text);
+  margin: 0.2rem 0 0.5rem;
+  font-weight: 500;
+}
+.placard-excerpt {
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--muted);
+  margin: 0 0 0.9rem;
+}
+.placard-enter {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+.placard-enter-icon {
+  width: 0.85rem;
+  height: 0.85rem;
+}

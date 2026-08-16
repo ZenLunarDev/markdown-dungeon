@@ -6,5 +6,5 @@ There Comes Noting but despair and agony To suddenly hearing a cat 🙀 with mas
 
 Watch What happes next another time.
 
-If you have something to add here then you can help us by [contributing to this dungeon](https://github.com/MakeContributions/markdown-dungeon/issues/112) 🙂
+If you have something to add here then you can help us by [contributing to this dungeon](https://github.com/ZenLunarDev/markdown-dungeon/issues/112) 🙂
 
