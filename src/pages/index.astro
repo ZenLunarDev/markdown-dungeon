@@ -1,0 +1,113 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import dungeonInfo from '../data/dungeon-info.json';
+import { excerptFromMarkdown } from '../lib/markdown.js';
+import { dungeonImageUrl } from '../lib/dungeons.js';
+
+const entries = await getCollection('dungeons');
+const journeys = entries
+  .filter((e) => e.id.endsWith('begin-journey'))
+  .map((e) => {
+    const parts = e.id.split('/').filter(Boolean);
+    const language = parts[0];
+    const dungeon = parts[1];
+    const info = dungeonInfo.find(
+      (d) => d.name === dungeon && d.language === language
+    );
+    return {
+      route: `/${e.id}/`,
+      info,
+      excerpt: excerptFromMarkdown(e.body),
+    };
+  })
+  .filter((c) => c.info);
+
+const toRoman = (num) => {
+  const map = [
+    [1000, 'M'],
+    [900, 'CM'],
+    [500, 'D'],
+    [400, 'CD'],
+    [100, 'C'],
+    [90, 'XC'],
+    [50, 'L'],
+    [40, 'XL'],
+    [10, 'X'],
+    [9, 'IX'],
+    [5, 'V'],
+    [4, 'IV'],
+    [1, 'I'],
+  ];
+  let out = '';
+  for (const [value, sym] of map) {
+    while (num >= value) {
+      out += sym;
+      num -= value;
+    }
+  }
+  return out;
+};
+
+let index = 0;
+---
+
+<BaseLayout>
+  <main>
+    <section class="codex-head">
+      <h1 class="codex-title">Markdown Dungeon</h1>
+      <div class="rule-ornament" aria-hidden="true">
+        <svg class="ornament-diamond" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 3l9 9-9 9-9-9z"></path>
+        </svg>
+      </div>
+    </section>
+
+    <section class="home-grid">
+      <div class="placard-grid">
+        {
+          journeys.map((card) => (
+            <a href={card.route} class="placard">
+              <div class="placard-frame">
+                <span class="placard-num">{toRoman(++index)}</span>
+                <span class="placard-lang">{card.info.language}</span>
+                <div class="placard-plate">
+                  <img
+                    src={dungeonImageUrl(card.info)}
+                    alt={card.info.display}
+                    loading="lazy"
+                  />
+                  <span class="placard-seal" aria-hidden="true">
+                    <svg
+                      class="placard-seal-icon"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                    >
+                      <path d="M12 2l2.2 7.8L22 12l-7.8 2.2L12 22l-2.2-7.8L2 12l7.8-2.2z"></path>
+                    </svg>
+                  </span>
+                </div>
+                <h3 class="placard-title">{card.info.display}</h3>
+                <p class="placard-excerpt">{card.excerpt}</p>
+                <span class="placard-enter">
+                  Enter the room
+                  <svg
+                    class="placard-enter-icon"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M4 12h15M13 6l6 6-6 6"></path>
+                  </svg>
+                </span>
+              </div>
+            </a>
+          ))
+        }
+      </div>
+    </section>
+  </main>
+</BaseLayout>

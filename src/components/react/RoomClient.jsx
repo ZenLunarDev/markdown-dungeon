@@ -1,10 +1,13 @@
 import React, { useEffect, useRef } from 'react';
-import { resolveRoomLink } from '../lib/content';
+import { renderMarkdown } from '../../lib/markdown.js';
+import { resolveRoomLink } from '../../lib/link.js';
 
-// Renders a room's HTML and rewrites any relative `.md` links into absolute
-// SPA routes so they work with client-side navigation.
-export default function RoomView({ html, route }) {
+// Renders the room and rewrites relative `.md` links into SPA-style routes.
+// Navigation itself is handled natively (Astro View Transitions make it
+// feel client-side without a router).
+export default function RoomClient({ raw, route }) {
   const ref = useRef(null);
+  const html = renderMarkdown(raw);
 
   useEffect(() => {
     const root = ref.current;
@@ -22,10 +25,6 @@ export default function RoomView({ html, route }) {
   }, [html, route]);
 
   return (
-    <article
-      className="room"
-      ref={ref}
-      dangerouslySetInnerHTML={{ __html: html }}
-    />
+    <article className="room" ref={ref} dangerouslySetInnerHTML={{ __html: html }} />
   );
 }

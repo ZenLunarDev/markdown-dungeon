@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import RoomClient from '../components/react/RoomClient.jsx';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('dungeons');
+  return entries.map((entry) => ({
+    params: { path: entry.id },
+    props: { raw: entry.body, route: `/${entry.id}/` },
+  }));
+}
+
+const { raw, route } = Astro.props;
+const crumbs = route.split('/').filter(Boolean);
+---
+
+<BaseLayout>
+  <main class="room-shell">
+    <nav class="coords" aria-label="location">
+      {
+        crumbs.map((c) => (
+          <span class="coords-seg">
+            <span class="coords-sep">/</span>
+            {c}
+          </span>
+        ))
+      }
+    </nav>
+    <RoomClient raw={raw} route={route} client:load />
+  </main>
+</BaseLayout>

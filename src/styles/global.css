@@ -139,12 +139,6 @@ a {
   text-transform: uppercase;
   color: var(--text);
 }
-.masthead-tag {
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.12em;
-  color: var(--muted);
-}
 
 /* ---------- Footer ---------- */
 .footer {

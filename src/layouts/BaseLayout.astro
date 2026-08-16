@@ -1,0 +1,41 @@
+---
+import '../styles/global.css';
+import '../styles/home.css';
+import CursorGlow from '../components/react/CursorGlow.jsx';
+import Header from '../components/react/Header.jsx';
+import { ClientRouter } from 'astro:transitions';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <meta
+      name="description"
+      content="A dungeon is a room or cell in which prisoners are held, especially underground. Choose your path, room by room, written in Markdown."
+    />
+    <title>⚔️ Markdown Dungeon ⚔️</title>
+    <ClientRouter />
+  </head>
+  <body>
+    <CursorGlow client:load />
+    <Header client:load transition:persist />
+    <slot />
+    <footer class="footer">
+      <p>
+        {'Copyright © '}
+        <a
+          href="https://github.com/ZenLunarDev"
+          target="_blank"
+          rel="noreferrer">Make Contributions</a
+        >{' '}
+        {new Date().getFullYear()}.
+      </p>
+    </footer>
+  </body>
+</html>

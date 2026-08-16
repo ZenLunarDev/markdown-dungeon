@@ -1,24 +1,20 @@
 {
   "name": "markdown-dungeon",
-  "version": "2.0.0",
-  "private": true,
-  "description": "A dungeon crawler where every room is written in Markdown. Built with Vite + React + CSS.",
-  "license": "MIT",
+  "version": "3.0.0",
   "type": "module",
+  "description": "A dungeon crawler where every room is written in Markdown. Built with Astro + React + CSS.",
+  "license": "MIT",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview",
-    "start": "vite"
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "start": "astro dev"
   },
   "dependencies": {
+    "@astrojs/react": "^4.2.0",
+    "astro": "^5.0.0",
     "marked": "^12.0.2",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-router-dom": "^6.26.2"
-  },
-  "devDependencies": {
-    "@vitejs/plugin-react": "^4.3.1",
-    "vite": "^5.4.8"
+    "react-dom": "^18.3.1"
   }
 }

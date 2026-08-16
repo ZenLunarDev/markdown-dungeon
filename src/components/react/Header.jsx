@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { CompassSeal } from './icons.jsx';
+import { CompassSeal } from '../icons.jsx';
 
+// The masthead compass seal rotates to point at the cursor.
 export default function Header() {
   const sealRef = useRef(null);
 
@@ -25,13 +25,12 @@ export default function Header() {
 
   return (
     <header className="masthead">
-      <Link to="/" className="masthead-brand">
+      <a href="/" className="masthead-brand">
         <span className="seal-wrap" ref={sealRef}>
           <CompassSeal className="seal" />
         </span>
         <span className="masthead-title">Markdown Dungeon</span>
-      </Link>
-      <span className="masthead-tag">a labyrinth in markdown</span>
+      </a>
     </header>
   );
 }
