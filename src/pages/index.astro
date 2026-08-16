@@ -66,10 +66,17 @@ let index = 0;
     <section class="home-grid">
       <div class="placard-grid">
         {
-          journeys.map((card) => (
-            <a href={card.route} class="placard">
+          journeys.map((card) => {
+            const n = ++index;
+            return (
+            <a
+              href={card.route}
+              class="placard"
+              data-reveal
+              style={`transition-delay: ${(n - 1) * 70}ms`}
+            >
               <div class="placard-frame">
-                <span class="placard-num">{toRoman(++index)}</span>
+                <span class="placard-num">{toRoman(n)}</span>
                 <span class="placard-lang">{card.info.language}</span>
                 <div class="placard-plate">
                   <img
@@ -105,7 +112,8 @@ let index = 0;
                 </span>
               </div>
             </a>
-          ))
+            );
+          })
         }
       </div>
     </section>

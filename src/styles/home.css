@@ -54,7 +54,6 @@
 .placard {
   display: block;
   color: var(--text);
-  animation: fadeUp 0.55s ease both;
 }
 .placard-frame {
   position: relative;
